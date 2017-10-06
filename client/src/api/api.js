@@ -18,6 +18,10 @@ class API {
   static async getArticle(author, permlink) {
     return sendRequest(`/api/article/${author}/${permlink}`);
   }
+
+  static async getTags() {
+    return sendRequest(`/api/tags`);
+  }
 }
 
 export default API;

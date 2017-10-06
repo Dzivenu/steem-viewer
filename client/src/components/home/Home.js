@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { fetchTrending } from '../../state/actions/homeActions';
+import { fetchTrending, fetchTags } from '../../state/actions/homeActions';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import ArticlePreview from '../common/ArticlePreview';
 import Header from '../common/Header';
+import Sidebar from '../common/Sidebar';
 
 const ArticleContainer = styled.div`
   display: flex;
@@ -20,10 +21,13 @@ const Loading = styled.i`
 const mapStateToProps = state => ({
   articles: state.home.articles,
   loading: state.home.loading,
+  tagsLoading: state.home.tagsLoading,
+  tags: state.home.tags,
 });
 
 const mapDispatchToProps = dispatch => ({
   fetchTrending: () => dispatch(fetchTrending()),
+  fetchTags: () => dispatch(fetchTags()),
 });
 
 const formatPayoutValue = payoutValue => {
@@ -34,6 +38,7 @@ const formatPayoutValue = payoutValue => {
 class Home extends Component {
   componentDidMount() {
     this.props.fetchTrending();
+    this.props.fetchTags();
   }
 
   renderArticles() {
@@ -76,10 +81,11 @@ class Home extends Component {
   }
 
   render() {
-    const { loading } = this.props;
+    const { loading, tagsLoading, tags } = this.props;
     return (
       <div>
         <Header />
+        <Sidebar loading={tagsLoading} tags={tags} />
         <ArticleContainer>
           {loading
             ? <Loading className={'fa fa-spinner fa-pulse fa-3x fa-fw'} />

@@ -6,3 +6,4 @@ const createAsyncActionType = type => ({
 
 export const FETCH_TRENDING = createAsyncActionType('@fetch-trending');
 export const FETCH_ARTICLE = createAsyncActionType('@fetch-article');
+export const FETCH_TAGS = createAsyncActionType('@fetch-tags');

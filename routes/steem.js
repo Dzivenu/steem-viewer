@@ -16,6 +16,15 @@ router.get('/trending', function(req, res) {
   });
 });
 
+router.get('/tags', function(req, res) {
+  steem.api.getTrendingTags(undefined, 10, function(err, result) {
+    res.send({
+      status: 0,
+      data: result,
+    });
+  });
+});
+
 router.get('/article/:author/:permlink', function(req, res) {
   steem.api.getContent(req.params.author, req.params.permlink, function(err, result) {
     res.send({
