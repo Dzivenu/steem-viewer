@@ -1,6 +1,6 @@
 
 ## Steem Article Viewer
-
+![steem article viewer](https://i.imgur.com/J1Cunfs.png)
 ## To Run:
 
 # Running API
