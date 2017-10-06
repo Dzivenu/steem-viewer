@@ -11,4 +11,5 @@ export const fetchTrendingSuccess = payload => ({
 
 export const fetchTrendingFail = error => ({
   type: FETCH_TRENDING.ERROR,
+  error,
 });

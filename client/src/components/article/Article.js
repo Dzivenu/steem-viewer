@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Link from '../common/Link';
@@ -50,6 +51,17 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class Article extends Component {
+  static propTypes = {
+    hideArticle: PropTypes.func,
+    author: PropTypes.string,
+    category: PropTypes.string,
+    permlink: PropTypes.string,
+    title: PropTypes.string,
+    body: PropTypes.string,
+    tags: PropTypes.array,
+    id: PropTypes.number,
+  };
+
   componentDidMount() {
     const { author, permlink, id, articles } = this.props;
 
